@@ -37,7 +37,7 @@ export default function ToDo(){
   return (
     <div className="min-h-screen bg-gray-100 flex items-start justify-center pt-16 px-4">
       <div className="w-full max-w-2xl bg-white rounded-xl shadow-md p-6">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">📝 Minha To-Do List</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">Lista de tarefas</h1>
           <ToDoForm
             description={description}
             onChange={setDescription}
