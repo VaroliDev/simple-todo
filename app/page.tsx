@@ -7,13 +7,18 @@ import ToDoList from "@/components/TodoList"
 
 export default function ToDo(){
   const [ToDoArray, setToDoList] = useState<ToDo[]>([])
+  const [date, setDate] = useState("")
   const [description, setDescription] = useState("")
+
+  const [filter, setFilter] = useState("none")
 
   function CreateItem(){
     if(description.trim() === "") return
+    if(date === "") return
 
     const Item = {
       id: Date.now(),
+      date: date,
       description: description,
       isCompleted: false
     }
@@ -40,11 +45,16 @@ export default function ToDo(){
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Lista de tarefas</h1>
           <ToDoForm
             description={description}
-            onChange={setDescription}
+            date={date}
+            filter={filter}
+            onChangeDescription={setDescription}
+            onChangeDate={setDate}
+            onChangeFilter={setFilter}
             onCreate={CreateItem}
           />
           <ToDoList
             todos={ToDoArray}
+            filter={filter}
             onDelete={DeleteItem}
             onToggle={ToggleItem}
           />
