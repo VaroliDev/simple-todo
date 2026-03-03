@@ -1,9 +1,9 @@
 import { ToDo } from "../types/ToDo"
 
 type ToDoItem = {
-    todo: ToDo
-    index: number
-    onToggle: (id: number) => void
+    todo: ToDo,
+    index: number,
+    onToggle: (id: number) => void,
     onDelete: (id: number) => void
 }
 
@@ -14,6 +14,10 @@ export default function ToDoItem({todo, index, onToggle, onDelete}: ToDoItem){
             <h4 className="text-sm font-bold text-gray-400 w-16">{index + 1}º</h4>
             <p className={`flex-1 mx-4 text-gray-800 ${todo.isCompleted ? "line-through text-gray-400" : ""}`}>
                 {todo.description}
+            </p>
+
+            <p className={`flex-1 mx-4 text-gray-800 ${todo.isCompleted ? "line-through text-gray-400" : ""}`}>
+                Até: {todo.date.split('-').reverse().join('/')}
             </p>
 
             <span className={`px-3 py-1 rounded-full text-xs font-medium mr-4 ${
