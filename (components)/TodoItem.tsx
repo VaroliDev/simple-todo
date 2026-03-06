@@ -4,11 +4,32 @@ type ToDoItem = {
     todo: ToDo,
     index: number,
     onToggle: (id: number) => void,
-    onDelete: (id: number) => void
+    onDelete: (id: number) => void,
+    isDue: (todo: any) => boolean
 }
 
-export default function ToDoItem({todo, index, onToggle, onDelete}: ToDoItem){
-      
+export default function ToDoItem({todo, index, onToggle, onDelete, isDue}: ToDoItem){
+    
+    function getStatusName(){
+        let due = isDue(todo)
+
+        if(due) return "Vencido"
+        
+        return todo.isCompleted
+        ? "Concluído"
+        : "Pendente"
+    }
+
+    function getStatusStyle(){
+        let due = isDue(todo)
+
+        if(due) return "bg-red-100 text-red-700"
+
+        return todo.isCompleted
+        ? "bg-green-100 text-green-700"
+        : "bg-yellow-100 text-yellow-700"
+    }
+
     return (
         <div className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
   
@@ -22,11 +43,9 @@ export default function ToDoItem({todo, index, onToggle, onDelete}: ToDoItem){
             </p>
 
             <span className={`px-3 py-1 rounded-full text-xs font-medium mr-4 ${
-                todo.isCompleted
-                ? "bg-green-100 text-green-700"
-                : "bg-yellow-100 text-yellow-700"
+                getStatusStyle()
             }`}>
-                {todo.isCompleted? "Concluído" : "Pendente"}
+                {getStatusName()}
             </span>
 
             <div className="flex gap-2">

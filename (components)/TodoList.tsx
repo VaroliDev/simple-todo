@@ -45,6 +45,7 @@ export default function ToDoList({todos, filter, onDelete, onToggle}: ToDoList){
                 index={index}
                 onDelete={onDelete}
                 onToggle={onToggle}
+                isDue={isDue}
                 />
             ))}
         </div>
