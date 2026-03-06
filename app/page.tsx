@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from "react"
-import type { ToDo } from "@/types/ToDo"
-import ToDoForm from "@/components/TodoForm"
-import ToDoList from "@/components/TodoList"
+import type { ToDo } from "@/(types)/ToDo"
+import ToDoForm from "@/(components)/TodoForm"
+import ToDoList from "@/(components)/TodoList"
 
 export default function ToDo(){
   const [ToDoArray, setToDoList] = useState<ToDo[]>([])

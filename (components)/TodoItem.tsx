@@ -1,4 +1,4 @@
-import { ToDo } from "../types/ToDo"
+import { ToDo } from "../(types)/ToDo"
 
 type ToDoItem = {
     todo: ToDo,
@@ -8,6 +8,7 @@ type ToDoItem = {
 }
 
 export default function ToDoItem({todo, index, onToggle, onDelete}: ToDoItem){
+      
     return (
         <div className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
   
@@ -25,7 +26,7 @@ export default function ToDoItem({todo, index, onToggle, onDelete}: ToDoItem){
                 ? "bg-green-100 text-green-700"
                 : "bg-yellow-100 text-yellow-700"
             }`}>
-                {todo.isCompleted ? "Concluído" : "Pendente"}
+                {todo.isCompleted? "Concluído" : "Pendente"}
             </span>
 
             <div className="flex gap-2">

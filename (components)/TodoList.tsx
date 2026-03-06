@@ -1,4 +1,4 @@
-import { ToDo } from "../types/ToDo"
+import { ToDo } from "../(types)/ToDo"
 import ToDoItem from "./TodoItem"
 
 type ToDoList = {
@@ -13,12 +13,28 @@ export default function ToDoList({todos, filter, onDelete, onToggle}: ToDoList){
         return <h3>Ainda não foi criada nenhuma tarefa, crie uma agora mesmo no campo acima!</h3>
     }
 
+    function isDue(todo: any){
+        if(todo.isCompleted) return false
+
+        let itemDateArray = todo.date.split('-').reverse()
+
+        let currentDateArray = new Date().toLocaleDateString().split('/')
+
+        if(itemDateArray[0] >= currentDateArray[0] && itemDateArray[1] >= currentDateArray[1] && itemDateArray[2] >= currentDateArray[2]){
+            return false
+        } else{
+            return true
+        }
+    }
+
     const filteredTodos = todos.filter(todo => {
         switch (filter) {
             case "completed":
                 return todo.isCompleted;
             case "pending":
                 return !todo.isCompleted;
+            case "due":
+                return isDue(todo)
             default:
                 return true;
         }

@@ -34,6 +34,7 @@ export default function ToDoForm({description, date, filter, onChangeDescription
         <option value="none">Sem Filtro</option>
         <option value="completed">Completadas</option>
         <option value="pending">Pendentes</option>
+        <option value="due">Vencidos</option>
       </select>
 
       <button
