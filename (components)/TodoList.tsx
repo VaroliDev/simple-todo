@@ -20,11 +20,7 @@ export default function ToDoList({todos, filter, onDelete, onToggle}: ToDoList){
 
         let currentDateArray = new Date().toLocaleDateString().split('/')
 
-        if(itemDateArray[0] >= currentDateArray[0] && itemDateArray[1] >= currentDateArray[1] && itemDateArray[2] >= currentDateArray[2]){
-            return false
-        } else{
-            return true
-        }
+        return itemDateArray < currentDateArray
     }
 
     const filteredTodos = todos.filter(todo => {
