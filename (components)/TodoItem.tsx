@@ -19,14 +19,14 @@ export default function ToDoItem({todo, index, onToggle, onDelete, isDue}: ToDoI
         if(due){
             status = "Vencido"
             style = "bg-red-100 text-red-700"            
-        }
-
-        if(todo.isCompleted){
-            status = "Concluído"
-            style = "bg-green-100 text-green-700" 
-        } else {
-            status = "Pendente"
-            style = "bg-yellow-100 text-yellow-700" 
+        }else{
+            if(todo.isCompleted){
+                status = "Concluído"
+                style = "bg-green-100 text-green-700" 
+            } else {
+                status = "Pendente"
+                style = "bg-yellow-100 text-yellow-700" 
+            }
         }
 
         return(
