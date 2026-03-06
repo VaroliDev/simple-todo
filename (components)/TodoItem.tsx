@@ -9,25 +9,31 @@ type ToDoItem = {
 }
 
 export default function ToDoItem({todo, index, onToggle, onDelete, isDue}: ToDoItem){
-    
-    function getStatusName(){
-        let due = isDue(todo)
 
-        if(due) return "Vencido"
-        
-        return todo.isCompleted
-        ? "Concluído"
-        : "Pendente"
-    }
+    function getStatus(){
+        let due: boolean = isDue(todo)
 
-    function getStatusStyle(){
-        let due = isDue(todo)
+        let status: string = ""
+        let style: string = ""        
 
-        if(due) return "bg-red-100 text-red-700"
+        if(due){
+            status = "Vencido"
+            style = "bg-red-100 text-red-700"            
+        }
 
-        return todo.isCompleted
-        ? "bg-green-100 text-green-700"
-        : "bg-yellow-100 text-yellow-700"
+        if(todo.isCompleted){
+            status = "Concluído"
+            style = "bg-green-100 text-green-700" 
+        } else {
+            status = "Pendente"
+            style = "bg-yellow-100 text-yellow-700" 
+        }
+
+        return(
+        <span className={`px-3 py-1 rounded-full text-xs font-medium mr-4 ${style}`}>
+            {status}
+        </span>
+        )        
     }
 
     return (
@@ -42,11 +48,7 @@ export default function ToDoItem({todo, index, onToggle, onDelete, isDue}: ToDoI
                 Até: {todo.date.split('-').reverse().join('/')}
             </p>
 
-            <span className={`px-3 py-1 rounded-full text-xs font-medium mr-4 ${
-                getStatusStyle()
-            }`}>
-                {getStatusName()}
-            </span>
+            {getStatus()}
 
             <div className="flex gap-2">
                 <button
